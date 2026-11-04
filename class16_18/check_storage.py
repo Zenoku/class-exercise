@@ -147,8 +147,10 @@ def main():
     book_id = storage.add_book("Book A", 12.5)
     logger.info(f"Added book: id={book_id}")
 
-    print(storage.get_book(book_id)["title"])
-    print(storage.get_book(book_id)["price"])
+    book = storage.get_book(book_id)
+    if book is not None:
+        print(book["title"])
+        print(book["price"])
     books = storage.list_books(min_price=15, limit=2)
     print([(book["title"], book["price"]) for book in books])
 
